@@ -1,17 +1,11 @@
 import Button from "react-bootstrap/esm/Button"
 import NotFoundImageSvg from "./image/notFoundImageSVG"
 import { Link } from "react-router-dom"
-import GoBackIconSVG from "./icon/goBackIconSVG"
+import { BsHouseDoor } from "react-icons/bs"
 
 const NotFoundPage = () => {
   return (
-    <div
-      style={{
-        backgroundColor: "rgb(35,35,51)",
-        backgroundImage: `linear-gradient(0deg, rgba(35,35,51,1) 0%, rgba(97,97,121,1) 35%, rgba(166,170,171,1) 100%)`,
-        height: "100vh",
-      }}
-    >
+    <div style={{ height: "100vh" }}>
       <div
         style={{
           display: "flex",
@@ -22,9 +16,9 @@ const NotFoundPage = () => {
       >
         <NotFoundImageSvg />
         <div>
-          <Link to="/post-list">
+          <Link to="/posts">
             <Button
-              variant="warning"
+              variant="secondary"
               style={{
                 zIndex: "1",
                 marginTop: "-22rem",
@@ -32,8 +26,11 @@ const NotFoundPage = () => {
               }}
             >
               <span style={{ display: "flex", textAlign: "center" }}>
-                <GoBackIconSVG />
-                Go to the list of posts
+                <BsHouseDoor
+                  size={20}
+                  className="d-inline-block me-2"
+                />
+                Get back to the home page
               </span>
             </Button>
           </Link>

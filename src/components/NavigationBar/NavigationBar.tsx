@@ -29,6 +29,24 @@ function NavigationBar() {
           fluid
           style={{ display: "flex" }}
         >
+          <Navbar.Toggle />
+
+          <Navbar.Brand
+            style={{
+              margin: "auto",
+              fontFamily: "Montserrat",
+              fontSize: "2rem",
+              color: "#4682B4",
+            }}
+          >
+            MitraSoft
+          </Navbar.Brand>
+
+          <div
+            className="d-none d-md-block"
+            style={{ width: 60 }}
+          />
+
           <Navbar.Offcanvas placement="start">
             <Offcanvas.Header
               closeButton
@@ -39,7 +57,7 @@ function NavigationBar() {
             <Offcanvas.Body>
               <Nav className="justify-content-start flex-grow-3 pe-3">
                 <NavLink
-                  to="/post-list"
+                  to="/posts"
                   style={({ isActive }) => ({
                     color: isActive ? "blue" : "GrayText",
                     fontWeight: isActive ? 600 : 400,
@@ -63,6 +81,12 @@ function NavigationBar() {
                 </NavLink>
               </Nav>
               <NavDropdown.Divider style={{ height: "1rem" }} />
+
+              <div
+                className="d-none d-md-block"
+                style={{ flexGrow: 1 }}
+              />
+
               <Form className="d-flex">
                 <Form.Control
                   type="search"
@@ -74,19 +98,6 @@ function NavigationBar() {
               </Form>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
-          <Navbar.Toggle />
-
-          <Navbar.Brand
-            style={{
-              margin: "auto",
-              paddingRight: "1rem",
-              fontFamily: "fantasy",
-              fontSize: "2rem",
-              color: "#4682B4",
-            }}
-          >
-            Post List
-          </Navbar.Brand>
         </Container>
       </Navbar>
     </>

@@ -1,8 +1,10 @@
 import Card from "react-bootstrap/Card"
 import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row"
-import UserIconSVG from "./svg"
+import UserIconSVG from "./icon/svg"
 import { Link } from "react-router-dom"
+
+import CommentsList from "./CommentsList/CommentsList"
 
 function PostList() {
   return (
@@ -22,26 +24,26 @@ function PostList() {
                 <div
                   style={{
                     display: "flex",
+                    justifyContent: "space-between",
                     alignItems: "center",
                     marginBottom: "1rem",
                   }}
                 >
-                  <Link to={"/user-details"}>
-                    <UserIconSVG />
+                  <Link to={`/posts/${idx + 1}`}>
+                    <Card.Title style={{ margin: 0 }}>Post title</Card.Title>
                   </Link>
 
-                  <Card.Title style={{ margin: "auto 1rem" }}>
-                    User name
-                  </Card.Title>
+                  <Link to={"/users/1"}>
+                    <UserIconSVG />
+                  </Link>
                 </div>
 
-                <Card.Text>
+                <Card.Text style={{ marginBottom: "0.5rem" }}>
                   This is a longer card with supporting text below as a natural
                   lead-in to additional content. This content is a little bit
                   longer.
                 </Card.Text>
-                <Card.Link href="#">Card Link</Card.Link>
-                <Card.Link href="#">Another Link</Card.Link>
+                <CommentsList />
               </Card.Body>
             </Card>
           </Col>

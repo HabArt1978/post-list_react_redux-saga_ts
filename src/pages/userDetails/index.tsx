@@ -1,7 +1,9 @@
+import UserDetails from "../../components/UserDetails/UserDetails"
+
 const UserDetailsPage = () => {
   return (
     <div style={{ marginTop: "5rem" }}>
-      <h1>user details</h1>
+      <UserDetails />
     </div>
   )
 }
