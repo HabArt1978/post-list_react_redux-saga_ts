@@ -1,5 +1,8 @@
 export type PostsState = {
   posts: Post[]
+  isLoading: boolean
+  currentPage: number
+  postsPerPage: number
 }
 
 export type Post = {

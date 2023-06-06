@@ -14,6 +14,13 @@ const postsReduser: Reducer<PostsState, PostsAction> = (
         posts: action.payload,
       }
     }
+    case "SET_LOADING": {
+      return {
+        ...state,
+        isLoading: action.payload,
+      }
+    }
+
     default:
       return state
   }

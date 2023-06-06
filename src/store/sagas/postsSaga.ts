@@ -1,6 +1,5 @@
-import { CallEffect, PutEffect, call, put } from "redux-saga/effects"
-import { Post } from "../posts/types"
-import { PostsAction, setPosts } from "../posts/actions"
+import { CallEffect, PutEffect, call, put, delay } from "redux-saga/effects"
+import { PostsAction, setPosts, setLoading } from "../posts/actions"
 import axios, { AxiosResponse } from "axios"
 
 const fetchPostsFromApi = () =>
@@ -10,10 +9,13 @@ export default function* fetchPostsWorker(): Generator<
   CallEffect<AxiosResponse<any>> | PutEffect<PostsAction>
 > {
   try {
+    yield put(setLoading(true))
+
     const posts: any = yield call(fetchPostsFromApi)
     yield put(setPosts(posts.data))
 
-    console.log(posts.data)
+    yield delay(500)
+    yield put(setLoading(false))
   } catch (error) {
     console.log(`Post request error!`)
   }
