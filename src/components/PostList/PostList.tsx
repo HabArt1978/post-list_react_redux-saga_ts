@@ -5,8 +5,12 @@ import UserIconSVG from "./icon/svg"
 import { Link } from "react-router-dom"
 
 import CommentsList from "./CommentsList/CommentsList"
+import { useAppSelector } from "../../store/hooks"
+
+import classes from "./PostList.module.css"
 
 function PostList() {
+  const posts = useAppSelector(({ postsState }) => postsState.posts)
   return (
     <div
       style={{ maxWidth: "1200px", display: "flex", margin: "6rem auto 1rem" }}
@@ -17,8 +21,8 @@ function PostList() {
         lg={3}
         className="g-4"
       >
-        {Array.from({ length: 20 }).map((_, idx) => (
-          <Col key={idx}>
+        {posts.map((post, idx) => (
+          <Col key={post.id}>
             <Card border="secondary">
               <Card.Body>
                 <div
@@ -30,7 +34,9 @@ function PostList() {
                   }}
                 >
                   <Link to={`/posts/${idx + 1}`}>
-                    <Card.Title style={{ margin: 0 }}>Post title</Card.Title>
+                    <Card.Title className={classes.CardTitle}>
+                      {post.title}
+                    </Card.Title>
                   </Link>
 
                   <Link to={"/users/1"}>
@@ -38,11 +44,7 @@ function PostList() {
                   </Link>
                 </div>
 
-                <Card.Text style={{ marginBottom: "0.5rem" }}>
-                  This is a longer card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </Card.Text>
+                <Card.Text className={classes.CardText}>{post.body}</Card.Text>
                 <CommentsList />
               </Card.Body>
             </Card>
