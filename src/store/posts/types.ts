@@ -1,6 +1,6 @@
 export type PostsState = {
   posts: Post[]
-  isLoading: boolean
+  loading: boolean
   currentPage: number
   postsPerPage: number
 }

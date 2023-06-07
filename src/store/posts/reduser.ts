@@ -17,7 +17,25 @@ const postsReduser: Reducer<PostsState, PostsAction> = (
     case "SET_LOADING": {
       return {
         ...state,
-        isLoading: action.payload,
+        loading: action.payload,
+      }
+    }
+    case "SET_CURRENT_PAGE": {
+      return {
+        ...state,
+        currentPage: action.payload,
+      }
+    }
+    case "SET_NEXT_PAGE": {
+      return {
+        ...state,
+        currentPage: state.currentPage + 1,
+      }
+    }
+    case "SET_PREV_PAGE": {
+      return {
+        ...state,
+        currentPage: state.currentPage - 1,
       }
     }
 

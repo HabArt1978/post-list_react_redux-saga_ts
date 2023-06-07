@@ -5,18 +5,19 @@ import UserIconSVG from "./icon/svg"
 import { Link } from "react-router-dom"
 import OverlayTrigger from "react-bootstrap/OverlayTrigger"
 import Tooltip from "react-bootstrap/Tooltip"
-import Pagination from "react-bootstrap/Pagination"
 
-import CommentsList from "./CommentsList/CommentsList"
 import Loader from "../UI/Loader/Loader"
-import { useAppSelector } from "../../store/hooks"
+
+import { Post } from "../../store/posts/types"
 
 import classes from "./PostList.module.css"
 
-function PostList() {
-  const posts = useAppSelector(({ postsState }) => postsState.posts)
-  const isLoading = useAppSelector(({ postsState }) => postsState.isLoading)
+type PostListProps = {
+  posts: Post[]
+  loading: boolean
+}
 
+function PostList({ posts, loading }: PostListProps) {
   return (
     <div
       style={{
@@ -26,7 +27,7 @@ function PostList() {
         margin: "6rem auto 1rem",
       }}
     >
-      {isLoading ? (
+      {loading ? (
         <Loader />
       ) : (
         <Row
@@ -48,9 +49,13 @@ function PostList() {
                     }}
                   >
                     <OverlayTrigger
-                      placement="auto"
+                      placement="top"
+                      delay={{ show: 250, hide: 400 }}
                       overlay={
-                        <Tooltip id={`tooltip-${post.id}`}>
+                        <Tooltip
+                          id={`tooltip-${post.id}`}
+                          className="position-absolute"
+                        >
                           {post.title}
                         </Tooltip>
                       }
@@ -67,42 +72,15 @@ function PostList() {
                     </Link>
                   </div>
 
-                  <OverlayTrigger
-                    placement="auto"
-                    overlay={
-                      <Tooltip id={`tooltip-${post.id}`}>{post.body}</Tooltip>
-                    }
-                  >
-                    <Card.Text className={classes.CardText}>
-                      {post.body}
-                    </Card.Text>
-                  </OverlayTrigger>
-                  <CommentsList />
+                  <Card.Text className={classes.CardText}>
+                    {post.body}
+                  </Card.Text>
                 </Card.Body>
               </Card>
             </Col>
           ))}
         </Row>
       )}
-
-      <div
-        className="container p-4"
-        style={{ display: "flex", justifyContent: "center" }}
-      >
-        <Pagination>
-          <Pagination.First />
-          <Pagination.Prev />
-          <Pagination.Item>1</Pagination.Item>
-          <Pagination.Ellipsis />
-          <Pagination.Item active>2</Pagination.Item>
-          <Pagination.Item>3</Pagination.Item>
-          <Pagination.Item>4</Pagination.Item>
-          <Pagination.Ellipsis />
-          <Pagination.Item>5</Pagination.Item>
-          <Pagination.Next />
-          <Pagination.Last />
-        </Pagination>
-      </div>
     </div>
   )
 }
