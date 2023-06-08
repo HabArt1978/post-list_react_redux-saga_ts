@@ -42,7 +42,7 @@ function PaginationPosts({
           disabled={currentPage === 1}
         />
         {pageNumbers.map((num, idx) => (
-          <>
+          <div key={`pageNum ${idx}`}>
             {num === 2 || num === pageNumbers.length - 1 ? (
               <Pagination.Ellipsis />
             ) : (
@@ -54,7 +54,7 @@ function PaginationPosts({
                 {num}
               </Pagination.Item>
             )}
-          </>
+          </div>
         ))}
         <Pagination.Next
           onClick={() => dispatch(setNextPage())}
@@ -69,7 +69,3 @@ function PaginationPosts({
 }
 
 export default PaginationPosts
-
-{
-  /* <Pagination.Ellipsis /> */
-}
