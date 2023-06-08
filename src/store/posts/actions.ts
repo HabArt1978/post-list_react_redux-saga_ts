@@ -1,5 +1,6 @@
 import { Action } from "@reduxjs/toolkit"
 import { Post } from "./types"
+import { GET_POSTS_SAGA } from "../sagas/typesFromSaga"
 
 export type PostsAction =
   | SetPostsAction
@@ -7,6 +8,7 @@ export type PostsAction =
   | SetCurrentPageAction
   | SetNextPageAction
   | SetPrevPageAction
+  | GetPostsAction
 
 interface SetPostsAction extends Action {
   type: "SET_POSTS"
@@ -59,5 +61,14 @@ interface SetPrevPageAction extends Action {
 export const setPrevPage = (): SetPrevPageAction => {
   return {
     type: "SET_PREV_PAGE",
+  }
+}
+
+interface GetPostsAction extends Action {
+  type: "GET_POSTS_SAGA"
+}
+export const getPosts = (): GetPostsAction => {
+  return {
+    type: GET_POSTS_SAGA,
   }
 }
