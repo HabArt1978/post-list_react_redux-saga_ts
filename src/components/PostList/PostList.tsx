@@ -22,7 +22,7 @@ function PostList({ posts, loading }: PostListProps) {
         maxWidth: "1200px",
         display: "flex",
         flexDirection: "column",
-        margin: "6rem auto 1rem",
+        margin: "7rem auto 1rem",
       }}
     >
       {loading ? (

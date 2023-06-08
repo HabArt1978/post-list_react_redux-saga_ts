@@ -10,7 +10,9 @@ function CommentsList() {
         </Accordion.Header>
         <Accordion.Body>
           <Card>
-            <Card.Header>E-mail of the user who left a comment</Card.Header>
+            <Card.Header style={{ backgroundColor: "#faf7de" }}>
+              E-mail of the user who left a comment
+            </Card.Header>
             <Card.Body>
               <Card.Text>
                 With supporting text below as a natural lead-in to additional
