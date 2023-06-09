@@ -4,13 +4,14 @@ import {
   call,
   put,
   delay,
-  takeLatest,
+  takeLeading,
 } from "redux-saga/effects"
 
 import { PostsAction, setPosts, setLoading } from "../../posts/actions"
 import axios, { AxiosResponse } from "axios"
+
 import { Post } from "../../posts/types"
-import { GET_POSTS_SAGA } from "../typesFromSaga"
+import { GET_POSTS_SAGA } from "../typesForSagas"
 
 const fetchPostsFromApi = () =>
   axios.get<Post[]>("https://jsonplaceholder.typicode.com/posts")
@@ -34,5 +35,5 @@ export function* fetchPostsWorker(): Generator<
 }
 
 export function* watchPostsSaga() {
-  yield takeLatest(GET_POSTS_SAGA, fetchPostsWorker)
+  yield takeLeading(GET_POSTS_SAGA, fetchPostsWorker)
 }

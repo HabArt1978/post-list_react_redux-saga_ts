@@ -1,6 +1,6 @@
 import { Action } from "@reduxjs/toolkit"
 import { Post } from "./types"
-import { GET_POSTS_SAGA } from "../sagas/typesFromSaga"
+import { GET_POSTS_SAGA } from "../sagas/typesForSagas"
 
 export type PostsAction =
   | SetPostsAction

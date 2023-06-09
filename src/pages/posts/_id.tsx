@@ -28,7 +28,9 @@ const PostShowPage = () => {
           </NavLink>
         </div>
         <Card>
-          <Card.Header>{postItem?.title}</Card.Header>
+          <Card.Header style={{ fontWeight: 500, fontSize: "1.1rem" }}>
+            {postItem?.title}
+          </Card.Header>
           <Card.Body>
             <Card.Text>{postItem?.body}</Card.Text>
           </Card.Body>

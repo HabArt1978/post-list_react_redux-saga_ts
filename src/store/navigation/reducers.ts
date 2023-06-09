@@ -1,13 +1,7 @@
 import { Reducer } from "@reduxjs/toolkit"
 import { NavAction } from "./actions"
-
-export type NavState = {
-  isOpen: boolean
-}
-
-const initialState = {
-  isOpen: false,
-}
+import { initialState } from "./initialState"
+import { NavState } from "./types"
 
 const navigationReducer: Reducer<NavState, NavAction> = (
   state = initialState,

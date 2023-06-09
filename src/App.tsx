@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom"
 import { useEffect } from "react"
 import { useAppDispatch } from "./store/hooks"
-import { GET_POSTS_SAGA } from "./store/sagas/typesFromSaga"
+import { GET_POSTS_SAGA } from "./store/sagas/typesForSagas"
 
 import NavigationBar from "./components/NavigationBar/NavigationBar"
 import PostsIndexPage from "./pages/posts"
