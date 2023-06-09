@@ -3,7 +3,7 @@ import { commentsInitialState } from "./initialState"
 import { CommentsState } from "./types"
 import { CommentsAction } from "./actions"
 
-const commentsReduser: Reducer<CommentsState, CommentsAction> = (
+const commentsReducer: Reducer<CommentsState, CommentsAction> = (
   state = commentsInitialState,
   action,
 ) => {
@@ -33,4 +33,4 @@ const commentsReduser: Reducer<CommentsState, CommentsAction> = (
   }
 }
 
-export default commentsReduser
+export default commentsReducer

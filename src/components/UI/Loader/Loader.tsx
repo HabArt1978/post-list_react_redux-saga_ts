@@ -12,10 +12,10 @@ function Loader() {
     >
       <Spinner
         animation="border"
-        variant="danger"
+        variant="primary"
         role="status"
       ></Spinner>
-      <span style={{ marginLeft: "1rem", color: "red" }}>Loading...</span>
+      <span style={{ marginLeft: "1rem" }}>Loading...</span>
     </div>
   )
 }

@@ -4,8 +4,9 @@ import {
   call,
   put,
   delay,
-  takeLeading,
   select,
+  SelectEffect,
+  takeEvery,
 } from "redux-saga/effects"
 
 import {
@@ -16,25 +17,29 @@ import {
 import axios, { AxiosResponse } from "axios"
 import { Comment } from "../../comments/types"
 import { GET_COMMENTS_SAGA } from "../typesForSagas"
+import { RootState } from "../../store"
 
-const fetchCommentsFromApi = (params: number) => {
+const fetchPostComments = (postId: number) => {
   return axios.get<Comment[]>(
-    `https://jsonplaceholder.typicode.com/comments?postId=${params}`,
+    `https://jsonplaceholder.typicode.com/comments?postId=${postId}`,
   )
 }
 
 export function* fetchCommentsWorker(): Generator<
-  CallEffect<AxiosResponse<Comment[]>> | PutEffect<CommentsAction>
+  | SelectEffect
+  | CallEffect<AxiosResponse<Comment[]>>
+  | PutEffect<CommentsAction>
 > {
-  const paramsID: any = yield select(
-    ({ commentsState }) => commentsState.paramsID,
-  ) as any
+  const postId: number = (yield select(
+    (state: RootState) => state.commentsState.paramsID,
+  )) as any
 
   try {
     yield put(setLoadingComments(true))
 
     const response: AxiosResponse<Comment[]> = (yield call(
-      fetchCommentsFromApi(paramsID),
+      fetchPostComments,
+      postId,
     )) as any
     yield put(setComments(response.data))
 
@@ -46,5 +51,5 @@ export function* fetchCommentsWorker(): Generator<
 }
 
 export function* watchCommentsSaga() {
-  yield takeLeading(GET_COMMENTS_SAGA, fetchCommentsWorker)
+  yield takeEvery(GET_COMMENTS_SAGA, fetchCommentsWorker)
 }

@@ -13,17 +13,22 @@ const PostsIndexPage = () => {
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost)
 
   return (
-    <div className="px-3">
-      <PostList
-        posts={currentPosts}
-        loading={loading}
-      />
+    <div
+      className="px-3"
+      style={{ padding: "7rem 1rem 1rem 1rem", height: "100vh" }}
+    >
+      <div className="h-100 d-flex flex-column justify-content-between">
+        <PostList
+          posts={currentPosts}
+          loading={loading}
+        />
 
-      <PaginationPosts
-        postsPerPage={postsPerPage}
-        totalPosts={posts.length}
-        currentPage={currentPage}
-      />
+        <PaginationPosts
+          postsPerPage={postsPerPage}
+          totalPosts={posts.length}
+          currentPage={currentPage}
+        />
+      </div>
     </div>
   )
 }

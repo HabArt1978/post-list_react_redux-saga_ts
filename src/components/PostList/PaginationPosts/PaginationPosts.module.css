@@ -1,0 +1,10 @@
+.pagination *,
+.pagination * a {
+  display: flex;
+  justify-content: center;
+  width: 2.5rem;
+}
+.pagination * a,
+.pagination * * {
+  text-align: center;
+}

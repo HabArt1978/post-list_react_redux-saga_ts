@@ -4,5 +4,5 @@ export const postsInitialState: PostsState = {
   posts: [],
   loading: false,
   currentPage: 1,
-  postsPerPage: 9,
+  postsPerPage: 12,
 }

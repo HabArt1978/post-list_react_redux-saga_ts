@@ -4,7 +4,7 @@ import {
   call,
   put,
   delay,
-  takeLeading,
+  takeEvery,
 } from "redux-saga/effects"
 
 import { PostsAction, setPosts, setLoading } from "../../posts/actions"
@@ -35,5 +35,5 @@ export function* fetchPostsWorker(): Generator<
 }
 
 export function* watchPostsSaga() {
-  yield takeLeading(GET_POSTS_SAGA, fetchPostsWorker)
+  yield takeEvery(GET_POSTS_SAGA, fetchPostsWorker)
 }

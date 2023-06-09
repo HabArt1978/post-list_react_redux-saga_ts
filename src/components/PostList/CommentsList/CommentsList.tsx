@@ -21,7 +21,8 @@ function CommentsList() {
     dispatch(setParamsID(Number(params.id)))
   }, [dispatch, params.id])
 
-  const noСomments = comments.length === 0
+  const noСomments =
+    comments.filter(v => v.postId === Number(params.id)).length === 0
 
   useEffect(() => {
     if (isOpen && noСomments) {
