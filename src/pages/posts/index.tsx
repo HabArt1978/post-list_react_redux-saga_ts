@@ -14,8 +14,10 @@ const PostsIndexPage = () => {
 
   return (
     <div
-      className="px-3"
-      style={{ padding: "7rem 1rem 1rem 1rem", height: "100vh" }}
+      className="px-3 vh-100 d-flex justify-content-center"
+      style={{
+        paddingTop: "7rem",
+      }}
     >
       <div className="h-100 d-flex flex-column justify-content-between">
         <PostList
