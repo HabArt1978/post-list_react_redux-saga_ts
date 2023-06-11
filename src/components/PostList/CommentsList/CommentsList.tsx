@@ -40,19 +40,18 @@ function CommentsList() {
           {loading ? (
             <Loader />
           ) : (
-            <Card>
-              <Card.Header
-                style={{ backgroundColor: "#faf7de", fontWeight: 500 }}
-              >
-                E-mail of the user who left a comment
-              </Card.Header>
-              <Card.Body>
-                <Card.Text>
-                  With supporting text below as a natural lead-in to additional
-                  content.
-                </Card.Text>
-              </Card.Body>
-            </Card>
+            comments.map(comment => (
+              <Card className="mt-2">
+                <Card.Header
+                  style={{ backgroundColor: "#faf7de", fontWeight: 500 }}
+                >
+                  {comment.email}
+                </Card.Header>
+                <Card.Body>
+                  <Card.Text>{comment.body}</Card.Text>
+                </Card.Body>
+              </Card>
+            ))
           )}
         </Accordion.Body>
       </Accordion.Item>

@@ -1,65 +1,76 @@
 import Card from "react-bootstrap/Card"
-import { NavLink } from "react-router-dom"
+import ListGroup from "react-bootstrap/ListGroup"
 
 function UserDetails() {
   return (
-    <Card
-      style={{
-        maxWidth: "40rem",
-        display: "flex",
-        margin: "7rem auto 0",
-      }}
-    >
-      <Card.Body
-        style={{
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "center",
-          }}
-        >
-          <Card.Img
-            src="holder.js/100px180"
-            style={{ width: "50%", minWidth: "15rem", minHeight: "15rem" }}
-          />
-          <div
-            style={{
-              width: "40%",
-              minWidth: "15rem",
-              display: "flex",
-              flexDirection: "column",
-              padding: "1rem",
-            }}
-          >
-            <Card.Title className="mb-2">user name: Bret</Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">
-              name: Leanne Graham
-            </Card.Subtitle>
-            <Card.Subtitle className="mb-4 text-muted">
-              city: Gwenborough
-            </Card.Subtitle>{" "}
-            <Card.Subtitle className="mb-2">contacts:</Card.Subtitle>
-            <p style={{ margin: 0 }}>phone: 010-692-6593 x09125</p>
-            <p style={{ margin: 0 }}>email: Shanna@melissa.tv</p>
-            <p>website: anastasia.net</p>
-            <Card.Subtitle className="mb-4">
-              company: Deckow-Crist
-            </Card.Subtitle>
+    <Card style={{ width: "40rem" }}>
+      <Card.Body>
+        <Card.Title>
+          <span>
+            <small>User name : </small>
+          </span>
+          <span style={{ marginLeft: "0.5rem" }}>Bret</span>
+        </Card.Title>
+        <Card.Text>
+          <div className="d-flex">
+            <span style={{ fontWeight: 500, marginRight: "0.5rem" }}>
+              name :
+            </span>
+            <span>Leanne Graham</span>
           </div>
-        </div>
+        </Card.Text>
 
-        <NavLink
-          to={"/posts"}
-          style={{ margin: "1rem auto 0" }}
+        <ListGroup
+          className="list-group-flush"
+          style={{ borderTop: "1px solid black" }}
         >
-          Go to the list of posts
-        </NavLink>
+          <ListGroup.Item>
+            <div>
+              <p style={{ fontWeight: 500 }}>contacts :</p>
+              <div>
+                <ul>
+                  <li>email : Sincere@april.biz</li>
+                  <li>phone : 1-770-736-8031 x56442</li>
+                  <li>website :hildegard.org</li>
+                </ul>
+              </div>
+            </div>
+          </ListGroup.Item>
+          <ListGroup.Item>
+            <div>
+              <p style={{ fontWeight: 500 }}>address :</p>
+              <div>
+                <ul>
+                  <li>city : Gwenborough</li>
+                  <li>street : Kulas Light</li>
+                  <li>suite : Apt. 556</li>
+                  <li>zipcode : 92998-3874</li>
+                  <li>
+                    geo :
+                    <ul>
+                      <li>lat : -37.3159</li>
+                      <li>lat : -37.3159</li>
+                    </ul>
+                  </li>
+
+                  <li>street : Kulas Light</li>
+                </ul>
+              </div>
+            </div>
+          </ListGroup.Item>
+          <ListGroup.Item>
+            <div>
+              <p style={{ fontWeight: 500 }}>company :</p>
+              <div>
+                <ul>
+                  <li>name : Romaguera-Crona</li>
+                  <li>catchPhrase : Multi-layered client-server neural-net</li>
+                  <li>bs : harness real-time e-markets</li>
+                </ul>
+              </div>
+            </div>
+          </ListGroup.Item>
+        </ListGroup>
       </Card.Body>
     </Card>
   )
