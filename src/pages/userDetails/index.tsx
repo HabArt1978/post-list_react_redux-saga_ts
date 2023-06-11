@@ -5,7 +5,7 @@ const UserDetailsPage = () => {
     <div
       className="px-3 d-flex justify-content-center"
       style={{
-        padding: "6rem 1rem 1rem 1rem",
+        padding: "7rem 1rem 1rem 1rem",
       }}
     >
       <UserDetails />

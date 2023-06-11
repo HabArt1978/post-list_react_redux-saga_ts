@@ -1,7 +1,23 @@
 import Card from "react-bootstrap/Card"
 import ListGroup from "react-bootstrap/ListGroup"
+import { useParams } from "react-router-dom"
+import { useAppDispatch } from "../../store/hooks"
+import { useEffect } from "react"
+import { setUserID } from "../../store/userDetails/actions"
+import { GET_USER_DETAILS_SAGA } from "../../store/sagas/typesForSagas"
 
 function UserDetails() {
+  const params = useParams()
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(setUserID(Number(params.id)))
+  }, [dispatch, params.id])
+
+  useEffect(() => {
+    dispatch({ type: GET_USER_DETAILS_SAGA })
+  }, [dispatch])
+
   return (
     <Card style={{ width: "40rem" }}>
       <Card.Body>
@@ -31,7 +47,7 @@ function UserDetails() {
                 <ul>
                   <li>email : Sincere@april.biz</li>
                   <li>phone : 1-770-736-8031 x56442</li>
-                  <li>website :hildegard.org</li>
+                  <li>website : hildegard.org</li>
                 </ul>
               </div>
             </div>

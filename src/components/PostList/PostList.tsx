@@ -64,7 +64,7 @@ function PostList({ posts, loading }: PostListProps) {
                       </Link>
                     </OverlayTrigger>
 
-                    <Link to={"/users/1"}>
+                    <Link to={`/users/${post.userId}`}>
                       <UserIconSVG />
                     </Link>
                   </div>
