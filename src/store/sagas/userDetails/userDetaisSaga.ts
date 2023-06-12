@@ -12,7 +12,9 @@ import {
 import {
   UserDetailsAction,
   setUserDetails,
+  resetUserDetails,
   setLoadingUserDetails,
+  setError,
 } from "../../userDetails/actions"
 import axios, { AxiosResponse } from "axios"
 import { UserDetails } from "../../userDetails/types"
@@ -21,14 +23,14 @@ import { GET_USER_DETAILS_SAGA } from "../typesForSagas"
 import { RootState } from "../../store"
 
 const fetchUserDetailsComments = (userId: number) => {
-  return axios.get<UserDetails[]>(
-    `https://jsonplaceholder.typicode.com/users?userId=${userId}`,
+  return axios.get<UserDetails>(
+    `https://jsonplaceholder.typicode.com/users/${userId}`,
   )
 }
 
 export function* fetchCommentsWorker(): Generator<
   | SelectEffect
-  | CallEffect<AxiosResponse<UserDetails[]>>
+  | CallEffect<AxiosResponse<UserDetails>>
   | PutEffect<UserDetailsAction>
 > {
   const userID: number = (yield select(
@@ -36,6 +38,8 @@ export function* fetchCommentsWorker(): Generator<
   )) as any
 
   try {
+    yield put(setError(null))
+    yield put(resetUserDetails())
     yield put(setLoadingUserDetails(true))
 
     const response: AxiosResponse<UserDetails> = (yield call(
@@ -47,7 +51,8 @@ export function* fetchCommentsWorker(): Generator<
     yield delay(500)
     yield put(setLoadingUserDetails(false))
   } catch (error) {
-    console.log(`User details request error!`)
+    yield delay(1000)
+    yield put(setError("User not received !"))
   }
 }
 

@@ -11,7 +11,14 @@ const userDetailsReducer: Reducer<UserDetailsState, UserDetailsAction> = (
     case "SET_USER_DETAILS": {
       return {
         ...state,
-        comments: action.payload,
+        details: action.payload,
+      }
+    }
+
+    case "RESET_USER_DETAILS": {
+      return {
+        ...state,
+        details: null,
       }
     }
 
@@ -25,6 +32,13 @@ const userDetailsReducer: Reducer<UserDetailsState, UserDetailsAction> = (
       return {
         ...state,
         userID: action.payload,
+      }
+    }
+
+    case "SET_ERROR": {
+      return {
+        ...state,
+        errorText: action.payload,
       }
     }
 

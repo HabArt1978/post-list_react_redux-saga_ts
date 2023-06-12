@@ -1,10 +1,10 @@
 import Card from "react-bootstrap/Card"
-import { NavLink } from "react-router-dom"
-import { BsChevronLeft } from "react-icons/bs"
 import CommentsList from "../../components/PostList/CommentsList/CommentsList"
 
 import { useAppSelector } from "../../store/hooks"
 import { useParams } from "react-router-dom"
+
+import LinkToHomePage from "../../components/UI/Loader/LinkToHomePage/LinkToHomePage"
 
 const PostShowPage = () => {
   const params = useParams()
@@ -18,15 +18,8 @@ const PostShowPage = () => {
         style={{ maxWidth: "1200px" }}
         className="mx-auto"
       >
-        <div className="ms-2 mb-4">
-          <NavLink
-            to={"/posts"}
-            style={{ margin: "1rem auto 0" }}
-          >
-            <BsChevronLeft className="me-1" />
-            Back to posts
-          </NavLink>
-        </div>
+        <LinkToHomePage />
+
         <Card>
           <Card.Header style={{ fontWeight: 500, fontSize: "1.1rem" }}>
             {postItem?.title}

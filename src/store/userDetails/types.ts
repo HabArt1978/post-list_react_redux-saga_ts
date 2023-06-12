@@ -1,13 +1,14 @@
 export type UserDetailsState = {
-  details: UserDetails[]
+  details: UserDetails | null
   loading: boolean
   userID: number | null
+  errorText: string | null
 }
 
 export type UserDetails = {
   id: number
   name: string
-  userName: string
+  username: string
   email: string
   address: Address
   phone: string
