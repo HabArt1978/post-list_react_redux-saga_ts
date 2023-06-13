@@ -1,3 +1,4 @@
+import { Container } from "react-bootstrap"
 import DetailedUserData from "../../components/DetailedUserData/DetailedUserData"
 import LinkToHomePage from "../../components/UI/Loader/LinkToHomePage/LinkToHomePage"
 import { useAppSelector } from "../../store/hooks"
@@ -7,13 +8,16 @@ const UserDetailsPage = () => {
     ({ userDetailsState }) => userDetailsState,
   )
   return (
-    <div
-      className="px-3 d-flex flex-column align-items-center"
+    <Container
+      className="px-3 w-100 d-flex justyfy-content-center"
       style={{
         padding: "7rem 1rem 1rem 1rem",
       }}
     >
-      <div>
+      <div
+        className="d-flex flex-column mx-auto"
+        style={{ minWidth: "50%" }}
+      >
         <LinkToHomePage />
         <DetailedUserData
           details={details}
@@ -21,7 +25,7 @@ const UserDetailsPage = () => {
           errorText={errorText}
         />
       </div>
-    </div>
+    </Container>
   )
 }
 

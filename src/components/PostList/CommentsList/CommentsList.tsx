@@ -31,7 +31,10 @@ function CommentsList() {
   }, [isOpen, noСomments, dispatch])
 
   return (
-    <Accordion flush>
+    <Accordion
+      flush
+      className="shadow bg-body-tertiary rounded"
+    >
       <Accordion.Item eventKey="0">
         <Accordion.Header onClick={() => setIsOpen(!isOpen)}>
           <i style={{ color: "#1E90FF" }}>Comments list</i>

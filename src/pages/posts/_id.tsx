@@ -20,7 +20,10 @@ const PostShowPage = () => {
       >
         <LinkToHomePage />
 
-        <Card>
+        <Card
+          border="light"
+          className="shadow p-3 mb-3 bg-body-tertiary rounded"
+        >
           <Card.Header style={{ fontWeight: 500, fontSize: "1.1rem" }}>
             {postItem?.title}
           </Card.Header>

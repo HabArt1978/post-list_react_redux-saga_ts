@@ -32,38 +32,36 @@ function DetailedUserData({ details, loading, errorText }: UserDetailsProps) {
 
   if (errorText)
     return (
-      <div style={{ minWidth: "50rem" }}>
-        <Alert variant="danger">{errorText}</Alert>
-      </div>
+      <Alert
+        variant="danger"
+        className="shadow-lg p-3 mb-5 bg-body-tertiary rounded"
+      >
+        <span className="fw-bold">{errorText}</span>
+      </Alert>
     )
 
   return (
-    <div style={{ minWidth: "50rem" }}>
+    <div className="shadow p-3 mb-5 bg-body-tertiary rounded">
       {loading ? (
         <Loader />
       ) : (
-        <Card style={{ maxWidth: "50rem" }}>
+        <Card>
           {!userNotReceived && (
             <Card.Body>
               <Card.Title>
-                <span style={{ marginRight: "0.5rem" }}>
+                <span className="me-1">
                   <small>User name : </small>
                 </span>
                 <span>{details.username}</span>
               </Card.Title>
               <Card.Text>
-                <span style={{ fontWeight: 500, marginRight: "0.5rem" }}>
-                  name :
-                </span>
+                <span className="fw-semibold me-1">name : </span>
                 <span>{details.name}</span>
               </Card.Text>
 
-              <ListGroup
-                className="list-group-flush"
-                style={{ borderTop: "1px solid black" }}
-              >
+              <ListGroup className="list-group-flush border-top border-2 border-secondary">
                 <ListGroup.Item>
-                  <p style={{ fontWeight: 500 }}>contacts :</p>
+                  <p className="fw-semibold">contacts :</p>
                   <span>
                     <ul>
                       <li>email : {details.email}</li>
@@ -73,7 +71,7 @@ function DetailedUserData({ details, loading, errorText }: UserDetailsProps) {
                   </span>
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <p style={{ fontWeight: 500 }}>address :</p>
+                  <p className="fw-semibold">address :</p>
                   <div>
                     <ul>
                       <li>city : {details.address.city}</li>
@@ -91,7 +89,7 @@ function DetailedUserData({ details, loading, errorText }: UserDetailsProps) {
                   </div>
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <p style={{ fontWeight: 500 }}>company :</p>
+                  <p className="fw-semibold">company :</p>
                   <div>
                     <ul>
                       <li>name : {details.company.name}</li>

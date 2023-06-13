@@ -35,7 +35,10 @@ function PostList({ posts, loading }: PostListProps) {
         >
           {posts.map(post => (
             <Col key={post.id}>
-              <Card border="secondary">
+              <Card
+                border="light"
+                className="shadow bg-body-tertiary rounded"
+              >
                 <Card.Body>
                   <div
                     style={{
