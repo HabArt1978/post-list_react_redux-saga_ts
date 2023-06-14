@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "../../store/hooks"
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { useState, KeyboardEvent } from "react"
 import {
   menuToggle,
@@ -14,15 +14,20 @@ import Nav from "react-bootstrap/Nav"
 import Navbar from "react-bootstrap/Navbar"
 import Offcanvas from "react-bootstrap/Offcanvas"
 import NavDropdown from "react-bootstrap/NavDropdown"
+import { GET_POSTS_SAGA } from "../../store/sagas/typesForSagas"
 
 function NavigationBar() {
   const [inputValue, setInputValue] = useState("")
+
   const { isOpen } = useAppSelector(({ navigationState }) => navigationState)
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
   const onClickHandler = () => {
     dispatch(setTitleValue(inputValue))
     dispatch(closeMenu())
+    dispatch({ type: GET_POSTS_SAGA })
+    navigate("/posts")
   }
 
   const handleKeyDown = (event: KeyboardEvent) => {

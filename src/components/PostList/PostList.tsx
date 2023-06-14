@@ -7,7 +7,6 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger"
 import Tooltip from "react-bootstrap/Tooltip"
 import Loader from "../UI/Loader"
 import { Post } from "../../store/posts/types"
-import { useAppSelector } from "../../store/hooks"
 
 import classes from "./PostList.module.css"
 import { Alert } from "react-bootstrap"
@@ -18,14 +17,6 @@ type PostListProps = {
 }
 
 function PostList({ posts, loading }: PostListProps) {
-  const { searchValue } = useAppSelector(
-    ({ navigationState }) => navigationState,
-  )
-
-  const filteredPostTitle = posts.filter(post =>
-    post.title.toLowerCase().includes(searchValue.toLowerCase()),
-  )
-
   return (
     <div
       style={{
@@ -34,6 +25,14 @@ function PostList({ posts, loading }: PostListProps) {
         flexDirection: "column",
       }}
     >
+      {posts.length === 0 && (
+        <Alert
+          variant="danger"
+          className="shadow-lg p-3 mb-5 bg-body-tertiary rounded"
+        >
+          <span className="fw-bold">Posts not found!</span>
+        </Alert>
+      )}
       {loading ? (
         <Loader />
       ) : (
@@ -43,15 +42,7 @@ function PostList({ posts, loading }: PostListProps) {
           lg={3}
           className="g-4"
         >
-          {filteredPostTitle.length === 0 && (
-            <Alert
-              variant="danger"
-              className="shadow-lg p-3 mb-5 bg-body-tertiary rounded"
-            >
-              <span className="fw-bold">Post not found!</span>
-            </Alert>
-          )}
-          {filteredPostTitle.map(post => (
+          {posts.map(post => (
             <Col key={post.id}>
               <Card
                 border="light"
