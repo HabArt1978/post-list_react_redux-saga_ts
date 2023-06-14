@@ -4,7 +4,7 @@ import CommentsList from "../../components/PostList/CommentsList/CommentsList"
 import { useAppSelector } from "../../store/hooks"
 import { useParams } from "react-router-dom"
 
-import LinkToHomePage from "../../components/UI/Loader/LinkToHomePage/LinkToHomePage"
+import LinkToHomePage from "../../components/UI/LinkToHomePage"
 
 const PostShowPage = () => {
   const params = useParams()

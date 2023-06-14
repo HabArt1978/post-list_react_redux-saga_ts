@@ -5,7 +5,7 @@ import UserIconSVG from "./icon/svg"
 import { Link } from "react-router-dom"
 import OverlayTrigger from "react-bootstrap/OverlayTrigger"
 import Tooltip from "react-bootstrap/Tooltip"
-import Loader from "../UI/Loader/Loader"
+import Loader from "../UI/Loader"
 import { Post } from "../../store/posts/types"
 import { useAppSelector } from "../../store/hooks"
 

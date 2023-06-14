@@ -1,6 +1,6 @@
 import { Container } from "react-bootstrap"
 import DetailedUserData from "../../components/DetailedUserData/DetailedUserData"
-import LinkToHomePage from "../../components/UI/Loader/LinkToHomePage/LinkToHomePage"
+import LinkToHomePage from "../../components/UI/LinkToHomePage"
 import { useAppSelector } from "../../store/hooks"
 
 const UserDetailsPage = () => {

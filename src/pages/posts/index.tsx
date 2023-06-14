@@ -1,5 +1,5 @@
 import PostList from "../../components/PostList/PostList"
-import PaginationPosts from "../../components/PostList/PaginationPosts/PaginationPosts"
+import PaginationPosts from "../../components/PaginationPosts/PaginationPosts"
 
 import { useAppSelector } from "../../store/hooks"
 

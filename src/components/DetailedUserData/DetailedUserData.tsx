@@ -7,7 +7,7 @@ import { setUserID, setError } from "../../store/userDetails/actions"
 import { GET_USER_DETAILS_SAGA } from "../../store/sagas/typesForSagas"
 import { UserDetails } from "../../store/userDetails/types"
 
-import Loader from "../UI/Loader/Loader"
+import Loader from "../UI/Loader"
 import { Alert } from "react-bootstrap"
 
 type UserDetailsProps = {

@@ -1,12 +1,12 @@
 import Pagination from "react-bootstrap/Pagination"
 
-import { useAppDispatch } from "../../../store/hooks"
+import { useAppDispatch } from "../../store/hooks"
 
 import {
   setCurrentPage,
   setPrevPage,
   setNextPage,
-} from "../../../store/posts/actions"
+} from "../../store/posts/actions"
 import classes from "./PaginationPosts.module.css"
 
 type PaginationPostsProps = {
