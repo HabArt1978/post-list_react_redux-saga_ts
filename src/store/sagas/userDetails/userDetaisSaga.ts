@@ -38,7 +38,6 @@ export function* fetchCommentsWorker(): Generator<
   )) as any
 
   try {
-    yield put(setError(null))
     yield put(resetUserDetails())
     yield put(setLoadingUserDetails(true))
 

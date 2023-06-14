@@ -3,7 +3,7 @@ import ListGroup from "react-bootstrap/ListGroup"
 import { useParams } from "react-router-dom"
 import { useAppDispatch } from "../../store/hooks"
 import { useEffect } from "react"
-import { setUserID } from "../../store/userDetails/actions"
+import { setUserID, setError } from "../../store/userDetails/actions"
 import { GET_USER_DETAILS_SAGA } from "../../store/sagas/typesForSagas"
 import { UserDetails } from "../../store/userDetails/types"
 
@@ -22,6 +22,9 @@ function DetailedUserData({ details, loading, errorText }: UserDetailsProps) {
 
   useEffect(() => {
     dispatch(setUserID(Number(params.id)))
+    return () => {
+      dispatch(setError(null))
+    }
   }, [dispatch, params.id])
 
   useEffect(() => {

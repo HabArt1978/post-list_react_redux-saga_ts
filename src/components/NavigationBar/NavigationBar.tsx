@@ -1,6 +1,11 @@
 import { useAppDispatch, useAppSelector } from "../../store/hooks"
-
-import { menuToggle, closeMenu } from "../../store/navigation/actions"
+import { NavLink } from "react-router-dom"
+import { useState, KeyboardEvent } from "react"
+import {
+  menuToggle,
+  closeMenu,
+  setTitleValue,
+} from "../../store/navigation/actions"
 
 import Button from "react-bootstrap/Button"
 import Container from "react-bootstrap/Container"
@@ -9,11 +14,23 @@ import Nav from "react-bootstrap/Nav"
 import Navbar from "react-bootstrap/Navbar"
 import Offcanvas from "react-bootstrap/Offcanvas"
 import NavDropdown from "react-bootstrap/NavDropdown"
-import { NavLink } from "react-router-dom"
 
 function NavigationBar() {
+  const [inputValue, setInputValue] = useState("")
   const { isOpen } = useAppSelector(({ navigationState }) => navigationState)
   const dispatch = useAppDispatch()
+
+  const onClickHandler = () => {
+    dispatch(setTitleValue(inputValue))
+    dispatch(closeMenu())
+  }
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === "Enter" && event.shiftKey === false) {
+      event.preventDefault()
+      dispatch(setTitleValue(inputValue))
+    }
+  }
 
   return (
     <>
@@ -93,8 +110,15 @@ function NavigationBar() {
                   placeholder="Search by post title"
                   className="me-2"
                   aria-label="Search by post title"
+                  onChange={event => setInputValue(event.target.value)}
+                  onKeyDown={event => handleKeyDown(event)}
                 />
-                <Button variant="outline-primary">Search</Button>
+                <Button
+                  variant="outline-primary"
+                  onClick={() => onClickHandler()}
+                >
+                  Search
+                </Button>
               </Form>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

@@ -28,9 +28,6 @@ function PaginationPosts({
     pageNumbers.push(i)
   }
 
-  // const startPoint = pageNumbers.length / 2 - 2
-  // const endPoint = startPoint + 5
-
   return (
     <div
       className="container p-4"

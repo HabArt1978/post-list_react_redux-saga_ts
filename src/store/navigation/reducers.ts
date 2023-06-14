@@ -10,12 +10,20 @@ const navigationReducer: Reducer<NavState, NavAction> = (
   switch (action.type) {
     case "MENU_TOGGLE":
       return {
+        ...state,
         isOpen: !state.isOpen,
       }
 
     case "CLOSE_MENU": {
       return {
+        ...state,
         isOpen: false,
+      }
+    }
+    case "SET_TITLE_VALUE": {
+      return {
+        ...state,
+        searchValue: action.payload,
       }
     }
 
