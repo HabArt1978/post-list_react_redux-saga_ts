@@ -29,10 +29,7 @@ function PaginationPosts({
   }
 
   return (
-    <div
-      className="container p-4"
-      style={{ display: "flex", justifyContent: "center" }}
-    >
+    <div className="d-flex justify-content-center p-3">
       <Pagination className={classes.pagination}>
         {currentPage > 1 && (
           <Pagination.Item onClick={() => dispatch(setCurrentPage(1))}>

@@ -44,7 +44,10 @@ function CommentsList() {
             <Loader />
           ) : (
             comments.map(comment => (
-              <Card className="mt-2">
+              <Card
+                className="mt-2"
+                key={comment.id}
+              >
                 <Card.Header
                   style={{ backgroundColor: "#faf7de", fontWeight: 500 }}
                 >

@@ -1,7 +1,9 @@
 import PostList from "../../components/PostList/PostList"
 import PaginationPosts from "../../components/PaginationPosts/PaginationPosts"
+import SortByPostTitle from "../../components/SortByPostTitle/SortByPostTitle"
 
 import { useAppSelector } from "../../store/hooks"
+import Loader from "../../components/UI/Loader"
 
 const PostsIndexPage = () => {
   const { posts, loading, currentPage, postsPerPage } = useAppSelector(
@@ -14,23 +16,25 @@ const PostsIndexPage = () => {
 
   return (
     <div
-      className="px-3 vh-100 d-flex justify-content-center"
+      className="vh-100 px-3 d-flex justify-content-center"
       style={{
-        paddingTop: "7rem",
+        paddingTop: "6rem",
       }}
     >
-      <div className="h-100 d-flex flex-column justify-content-between">
-        <PostList
-          posts={currentPosts}
-          loading={loading}
-        />
+      {loading || posts.length === 0 ? (
+        <Loader />
+      ) : (
+        <div className="h-100 d-flex flex-column justify-content-between">
+          <SortByPostTitle />
+          <PostList posts={currentPosts} />
 
-        <PaginationPosts
-          postsPerPage={postsPerPage}
-          totalPosts={posts.length}
-          currentPage={currentPage}
-        />
-      </div>
+          <PaginationPosts
+            postsPerPage={postsPerPage}
+            totalPosts={posts.length}
+            currentPage={currentPage}
+          />
+        </div>
+      )}
     </div>
   )
 }

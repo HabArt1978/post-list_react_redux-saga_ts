@@ -38,6 +38,28 @@ const postsReduser: Reducer<PostsState, PostsAction> = (
         currentPage: state.currentPage - 1,
       }
     }
+    case "SORT_TITLES_POSTS_ASCENDING": {
+      const posts = [...state.posts]
+      if (posts.length === 0) return state
+
+      posts.sort((a, b) => (a.title < b.title ? -1 : 1))
+
+      return {
+        ...state,
+        posts,
+      }
+    }
+    case "SORT_TITLES_POSTS_DESCENDING": {
+      const posts = [...state.posts]
+      if (posts.length === 0) return state
+
+      posts.sort((a, b) => (a.title < b.title ? 1 : -1))
+
+      return {
+        ...state,
+        posts,
+      }
+    }
 
     default:
       return state

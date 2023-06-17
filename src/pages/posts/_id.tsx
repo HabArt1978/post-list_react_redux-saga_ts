@@ -1,5 +1,5 @@
 import Card from "react-bootstrap/Card"
-import CommentsList from "../../components/PostList/CommentsList/CommentsList"
+import CommentsList from "../../components/CommentsList/CommentsList"
 
 import { useAppSelector } from "../../store/hooks"
 import { useParams } from "react-router-dom"

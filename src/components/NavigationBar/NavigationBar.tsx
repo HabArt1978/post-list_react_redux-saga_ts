@@ -42,7 +42,6 @@ function NavigationBar() {
       <Navbar
         bg="light"
         expand="md"
-        className="mb-3"
         fixed="top"
         expanded={isOpen}
         onToggle={() => dispatch(menuToggle())}

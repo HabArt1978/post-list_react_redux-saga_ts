@@ -9,7 +9,8 @@ export type PostsAction =
   | SetNextPageAction
   | SetPrevPageAction
   | GetPostsAction
-
+  | SortTitlesPostsAscendingAction
+  | SortTitlesPostsDescendingAction
 interface SetPostsAction extends Action {
   type: "SET_POSTS"
   payload: Post[]
@@ -72,3 +73,22 @@ export const getPosts = (): GetPostsAction => {
     type: GET_POSTS_SAGA,
   }
 }
+
+interface SortTitlesPostsAscendingAction extends Action {
+  type: "SORT_TITLES_POSTS_ASCENDING"
+}
+export const sortTitlesPostsAscending = (): SortTitlesPostsAscendingAction => {
+  return {
+    type: "SORT_TITLES_POSTS_ASCENDING",
+  }
+}
+
+interface SortTitlesPostsDescendingAction extends Action {
+  type: "SORT_TITLES_POSTS_DESCENDING"
+}
+export const sortTitlesPostsDescending =
+  (): SortTitlesPostsDescendingAction => {
+    return {
+      type: "SORT_TITLES_POSTS_DESCENDING",
+    }
+  }
