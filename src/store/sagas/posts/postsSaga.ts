@@ -9,7 +9,12 @@ import {
   SelectEffect,
 } from "redux-saga/effects"
 
-import { PostsAction, setPosts, setLoading } from "../../posts/actions"
+import {
+  PostsAction,
+  setPosts,
+  setLoading,
+  setCurrentPage,
+} from "../../posts/actions"
 import axios, { AxiosResponse } from "axios"
 
 import { Post } from "../../posts/types"
@@ -28,6 +33,7 @@ export function* fetchPostsWorker(): Generator<
     )) as any
 
     yield put(setLoading(true))
+    yield put(setCurrentPage(1))
 
     const response: AxiosResponse<Post[]> = (yield call(
       fetchPostsFromApi,
