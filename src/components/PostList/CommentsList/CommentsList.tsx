@@ -1,11 +1,11 @@
 import Accordion from "react-bootstrap/Accordion"
 import Card from "react-bootstrap/Card"
-import Loader from "../UI/Loader"
-import { useAppSelector, useAppDispatch } from "../../store/hooks"
+import Loader from "../../UI/Loader"
+import { useAppSelector, useAppDispatch } from "../../../store/hooks"
 import { useParams } from "react-router-dom"
-import { GET_COMMENTS_SAGA } from "../../store/sagas/typesForSagas"
+import { GET_COMMENTS_SAGA } from "../../../store/sagas/typesForSagas"
 import { useState, useEffect } from "react"
-import { setParamsID } from "../../store/comments/actions"
+import { setParamsID } from "../../../store/comments/actions"
 
 function CommentsList() {
   const [isOpen, setIsOpen] = useState(false)

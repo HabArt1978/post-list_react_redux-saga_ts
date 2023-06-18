@@ -35,14 +35,7 @@ function PostList({ posts }: PostListProps) {
               className="shadow bg-body-tertiary rounded"
             >
               <Card.Body>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    marginBottom: "1rem",
-                  }}
-                >
+                <div className="d-flex justify-content-between align-items-center mb-3">
                   <OverlayTrigger
                     placement="top"
                     delay={{ show: 250, hide: 400 }}

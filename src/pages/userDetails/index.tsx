@@ -1,5 +1,5 @@
 import { Container } from "react-bootstrap"
-import DetailedUserData from "../../components/DetailedUserData/DetailedUserData"
+import DetailedUserData from "../../components/PostList/DetailedUserData/DetailedUserData"
 import LinkToHomePage from "../../components/UI/LinkToHomePage"
 import { useAppSelector } from "../../store/hooks"
 

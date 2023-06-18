@@ -6,22 +6,20 @@ import {
   sortTitlesPostsDescending,
 } from "../../store/posts/actions"
 
-import Icon from "./icon/Icon"
-
 import { GET_POSTS_SAGA } from "../../store/sagas/typesForSagas"
 
 const optionsValue = [
   {
     value: "DEF",
-    text: "Unsorted",
+    text: "- Unsorted",
   },
   {
     value: "ASC",
-    text: "Ascending order",
+    text: "▲ Ascending order",
   },
   {
     value: "DESC",
-    text: "Descending order",
+    text: "▼ Descending order",
   },
 ]
 
