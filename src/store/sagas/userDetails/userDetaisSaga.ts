@@ -50,8 +50,9 @@ export function* fetchCommentsWorker(): Generator<
     yield delay(500)
     yield put(setLoadingUserDetails(false))
   } catch (error) {
-    yield delay(1000)
-    yield put(setError("User not received !"))
+    yield delay(500)
+    yield put(setError("User not found !"))
+    yield put(setLoadingUserDetails(false))
   }
 }
 

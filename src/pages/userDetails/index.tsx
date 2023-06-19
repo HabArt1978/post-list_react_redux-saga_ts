@@ -7,6 +7,7 @@ const UserDetailsPage = () => {
   const { details, loading, errorText } = useAppSelector(
     ({ userDetailsState }) => userDetailsState,
   )
+
   return (
     <Container
       className="px-3 w-100 d-flex justyfy-content-center"

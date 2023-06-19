@@ -4,4 +4,5 @@ export const commentsInitialState: CommentsState = {
   comments: [],
   loading: false,
   paramsID: null,
+  errorText: null,
 }

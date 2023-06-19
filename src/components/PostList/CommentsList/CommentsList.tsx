@@ -5,7 +5,8 @@ import { useAppSelector, useAppDispatch } from "../../../store/hooks"
 import { useParams } from "react-router-dom"
 import { GET_COMMENTS_SAGA } from "../../../store/sagas/typesForSagas"
 import { useState, useEffect } from "react"
-import { setParamsID } from "../../../store/comments/actions"
+import { setErrorComments, setParamsID } from "../../../store/comments/actions"
+import { Alert } from "react-bootstrap"
 
 function CommentsList() {
   const [isOpen, setIsOpen] = useState(false)
@@ -13,7 +14,7 @@ function CommentsList() {
   const params = useParams()
   const dispatch = useAppDispatch()
 
-  const { loading, comments } = useAppSelector(
+  const { loading, comments, errorText } = useAppSelector(
     ({ commentsState }) => commentsState,
   )
 
@@ -28,6 +29,9 @@ function CommentsList() {
     if (isOpen && noСomments) {
       dispatch({ type: GET_COMMENTS_SAGA })
     }
+    return () => {
+      dispatch(setErrorComments(null))
+    }
   }, [isOpen, noСomments, dispatch])
 
   return (
@@ -40,7 +44,14 @@ function CommentsList() {
           <i style={{ color: "#1E90FF" }}>Comments list</i>
         </Accordion.Header>
         <Accordion.Body>
-          {loading ? (
+          {errorText && noСomments ? (
+            <Alert
+              variant="danger"
+              className="shadow-lg p-3 my-1 bg-body-tertiary rounded"
+            >
+              <span className="fw-bold">{errorText}</span>
+            </Alert>
+          ) : loading && !errorText ? (
             <Loader />
           ) : (
             comments.map(comment => (

@@ -12,6 +12,7 @@ import {
 import {
   CommentsAction,
   setComments,
+  setErrorComments,
   setLoadingComments,
 } from "../../comments/actions"
 import axios, { AxiosResponse } from "axios"
@@ -46,7 +47,9 @@ export function* fetchCommentsWorker(): Generator<
     yield delay(500)
     yield put(setLoadingComments(false))
   } catch (error) {
-    console.log(`Post request error!`)
+    yield delay(500)
+    yield put(setErrorComments("Comments not found !"))
+    yield put(setLoadingComments(false))
   }
 }
 

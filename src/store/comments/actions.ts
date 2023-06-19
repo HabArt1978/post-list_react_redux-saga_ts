@@ -7,6 +7,7 @@ export type CommentsAction =
   | SetLoadingCommentsAction
   | GetCommentsAction
   | SetParamsIdAction
+  | SetErrorComments
 
 interface SetCommentsAction extends Action {
   type: "SET_COMMENTS"
@@ -50,6 +51,19 @@ export const setParamsID = (
 ): SetParamsIdAction => {
   return {
     type: "SET_PARAMS_ID",
+    payload,
+  }
+}
+
+interface SetErrorComments extends Action {
+  type: "SET_ERROR_COMMENTS"
+  payload: string | null
+}
+export const setErrorComments = (
+  payload: SetErrorComments["payload"],
+): SetErrorComments => {
+  return {
+    type: "SET_ERROR_COMMENTS",
     payload,
   }
 }

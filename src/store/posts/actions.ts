@@ -4,13 +4,14 @@ import { GET_POSTS_SAGA } from "../sagas/typesForSagas"
 
 export type PostsAction =
   | SetPostsAction
-  | SetLoadingAction
+  | SetLoadingPostsAction
   | SetCurrentPageAction
   | SetNextPageAction
   | SetPrevPageAction
   | GetPostsAction
   | SortTitlesPostsAscendingAction
   | SortTitlesPostsDescendingAction
+  | SetErrorPostsAction
 interface SetPostsAction extends Action {
   type: "SET_POSTS"
   payload: Post[]
@@ -22,15 +23,15 @@ export const setPosts = (payload: Post[]): SetPostsAction => {
   }
 }
 
-interface SetLoadingAction extends Action {
-  type: "SET_LOADING"
+interface SetLoadingPostsAction extends Action {
+  type: "SET_LOADING_POSTS"
   payload: boolean
 }
-export const setLoading = (
-  payload: SetLoadingAction["payload"],
-): SetLoadingAction => {
+export const setLoadingPosts = (
+  payload: SetLoadingPostsAction["payload"],
+): SetLoadingPostsAction => {
   return {
-    type: "SET_LOADING",
+    type: "SET_LOADING_POSTS",
     payload,
   }
 }
@@ -92,3 +93,16 @@ export const sortTitlesPostsDescending =
       type: "SORT_TITLES_POSTS_DESCENDING",
     }
   }
+
+interface SetErrorPostsAction extends Action {
+  type: "SET_ERROR_POSTS"
+  payload: string | null
+}
+export const setErrorPosts = (
+  payload: SetErrorPostsAction["payload"],
+): SetErrorPostsAction => {
+  return {
+    type: "SET_ERROR_POSTS",
+    payload,
+  }
+}

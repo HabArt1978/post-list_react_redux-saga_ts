@@ -3,6 +3,7 @@ export type PostsState = {
   loading: boolean
   currentPage: number
   postsPerPage: number
+  errorText: string | null
 }
 
 export type Post = {

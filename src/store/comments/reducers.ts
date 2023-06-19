@@ -27,6 +27,12 @@ const commentsReducer: Reducer<CommentsState, CommentsAction> = (
         paramsID: action.payload,
       }
     }
+    case "SET_ERROR_COMMENTS": {
+      return {
+        ...state,
+        errorText: action.payload,
+      }
+    }
 
     default:
       return state

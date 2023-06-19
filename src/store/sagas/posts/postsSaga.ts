@@ -12,8 +12,9 @@ import {
 import {
   PostsAction,
   setPosts,
-  setLoading,
   setCurrentPage,
+  setErrorPosts,
+  setLoadingPosts,
 } from "../../posts/actions"
 import axios, { AxiosResponse } from "axios"
 
@@ -32,7 +33,7 @@ export function* fetchPostsWorker(): Generator<
       (state: RootState) => state.navigationState.searchValue,
     )) as any
 
-    yield put(setLoading(true))
+    yield put(setLoadingPosts(true))
     yield put(setCurrentPage(1))
 
     const response: AxiosResponse<Post[]> = (yield call(
@@ -48,9 +49,11 @@ export function* fetchPostsWorker(): Generator<
     )
 
     yield delay(500)
-    yield put(setLoading(false))
+    yield put(setLoadingPosts(false))
   } catch (error) {
-    console.log(`Post request error!`)
+    yield delay(500)
+    yield put(setErrorPosts("Posts not found !"))
+    yield put(setLoadingPosts(false))
   }
 }
 

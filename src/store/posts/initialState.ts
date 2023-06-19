@@ -5,4 +5,5 @@ export const postsInitialState: PostsState = {
   loading: false,
   currentPage: 1,
   postsPerPage: 12,
+  errorText: null,
 }

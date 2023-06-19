@@ -51,7 +51,7 @@ const SortByPostTitle = () => {
 
         <Form.Select
           aria-label="Sort by post title"
-          className="shadow -body-tertiary rounded"
+          className="shadow-sm -body-tertiary rounded"
           onChange={event => sortPosts(event.target.value)}
         >
           {optionsValue.map((option, idx) => (

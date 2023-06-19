@@ -20,6 +20,7 @@ function NavigationBar() {
   const [inputValue, setInputValue] = useState("")
 
   const { isOpen } = useAppSelector(({ navigationState }) => navigationState)
+
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
@@ -115,6 +116,7 @@ function NavigationBar() {
                   className="me-2"
                   aria-label="Search by post title"
                   onChange={event => setInputValue(event.target.value)}
+                  value={inputValue}
                   onKeyDown={event => handleKeyDown(event)}
                 />
                 <Button

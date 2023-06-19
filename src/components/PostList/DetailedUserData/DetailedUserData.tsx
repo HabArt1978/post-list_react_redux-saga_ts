@@ -32,17 +32,19 @@ function DetailedUserData({ details, loading, errorText }: UserDetailsProps) {
     dispatch({ type: GET_USER_DETAILS_SAGA })
   }, [dispatch])
 
-  const userNotReceived = details === null
+  const noUser = details === null
 
-  if (errorText)
+  if (noUser && errorText)
     return (
       <Alert
         variant="danger"
-        className="shadow-lg p-3 mb-5 bg-body-tertiary rounded"
+        className="shadow-lg p-3 mb-3 bg-body-tertiary rounded"
       >
         <span className="fw-bold">{errorText}</span>
       </Alert>
     )
+
+  if (noUser || loading) return <Loader />
 
   return (
     <div
@@ -50,63 +52,57 @@ function DetailedUserData({ details, loading, errorText }: UserDetailsProps) {
       style={{ maxWidth: "600px" }}
     >
       <Card>
-        {!userNotReceived && (
-          <Card.Body>
-            <Card.Title>
-              <span className="me-1">
-                <small>User name : </small>
-              </span>
-              <span>{details.username}</span>
-            </Card.Title>
-            <Card.Text>
-              <span className="fw-semibold me-1">name : </span>
-              <span>{details.name}</span>
-            </Card.Text>
+        <Card.Body>
+          <Card.Title>
+            <span className="me-1">
+              <small>User name : </small>
+            </span>
+            <span>{details.username}</span>
+          </Card.Title>
+          <Card.Text className="mb-2">
+            <span className="fw-semibold me-1">name : </span>
+            <span>{details.name}</span>
+          </Card.Text>
+          <Card.Text className="mb-3">
+            <a href="#user_posts">User posts</a>
+          </Card.Text>
 
-            <ListGroup className="list-group-flush border-top border-2 border-secondary ">
-              <ListGroup.Item>
-                <p className="fw-semibold">contacts :</p>
-                <span>
+          <ListGroup className="list-group-flush border-top border-2 border-secondary">
+            <ListGroup.Item>
+              <p className="fw-semibold">contacts :</p>
+              <ul>
+                <li>email : {details.email}</li>
+                <li>phone : {details.phone}</li>
+                <li>website : {details.website}</li>
+              </ul>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <p className="fw-semibold">address :</p>
+              <ul>
+                <li>city : {details.address.city}</li>
+                <li>street : {details.address.street}</li>
+                <li>suite : {details.address.suite}</li>
+                <li>zipcode : {details.address.zipcode}</li>
+                <li>
+                  geo :
                   <ul>
-                    <li>email : {details.email}</li>
-                    <li>phone : {details.phone}</li>
-                    <li>website : {details.website}</li>
+                    <li>lat : {details.address.geo.lat}</li>
+                    <li>lng : {details.address.geo.lng}</li>
                   </ul>
-                </span>
-              </ListGroup.Item>
-              <ListGroup.Item>
-                <p className="fw-semibold">address :</p>
-                <div>
-                  <ul>
-                    <li>city : {details.address.city}</li>
-                    <li>street : {details.address.street}</li>
-                    <li>suite : {details.address.suite}</li>
-                    <li>zipcode : {details.address.zipcode}</li>
-                    <li>
-                      geo :
-                      <ul>
-                        <li>lat : {details.address.geo.lat}</li>
-                        <li>lng : {details.address.geo.lng}</li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
-              </ListGroup.Item>
-              <ListGroup.Item>
-                <p className="fw-semibold">company :</p>
-                <div>
-                  <ul>
-                    <li>name : {details.company.name}</li>
-                    <li>catchPhrase : {details.company.catchPhrase}</li>
-                    <li>bs : {details.company.bs}</li>
-                  </ul>
-                </div>
-              </ListGroup.Item>
-            </ListGroup>
-          </Card.Body>
-        )}
+                </li>
+              </ul>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <p className="fw-semibold">company :</p>
+              <ul>
+                <li>name : {details.company.name}</li>
+                <li>catchPhrase : {details.company.catchPhrase}</li>
+                <li>bs : {details.company.bs}</li>
+              </ul>
+            </ListGroup.Item>
+          </ListGroup>
+        </Card.Body>
       </Card>
-
       <UserPostList />
     </div>
   )

@@ -7,10 +7,15 @@ const UserPostList = () => {
     ({ userDetailsState }) => userDetailsState,
   )
   const { posts } = useAppSelector(({ postsState }) => postsState)
+
   const userPostList = posts.filter(post => post.userId === userID)
 
   return (
-    <div className="d-flex flex-column mt-3">
+    <div
+      className="d-flex flex-column mt-3"
+      style={{ scrollMarginTop: "90px" }}
+      id="user_posts"
+    >
       <Container className="p-0">
         <Card className="pb-2">
           <Card.Header className="d-flex">

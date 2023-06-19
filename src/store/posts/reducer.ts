@@ -14,7 +14,7 @@ const postsReduser: Reducer<PostsState, PostsAction> = (
         posts: action.payload,
       }
     }
-    case "SET_LOADING": {
+    case "SET_LOADING_POSTS": {
       return {
         ...state,
         loading: action.payload,
@@ -58,6 +58,12 @@ const postsReduser: Reducer<PostsState, PostsAction> = (
       return {
         ...state,
         posts,
+      }
+    }
+    case "SET_ERROR_POSTS": {
+      return {
+        ...state,
+        errorText: action.payload,
       }
     }
 
