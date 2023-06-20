@@ -15,6 +15,8 @@ import Navbar from "react-bootstrap/Navbar"
 import Offcanvas from "react-bootstrap/Offcanvas"
 import NavDropdown from "react-bootstrap/NavDropdown"
 import { GET_POSTS_SAGA } from "../../store/sagas/typesForSagas"
+import { Image } from "react-bootstrap"
+import avatar from "./img/avatar.jpg"
 
 function NavigationBar() {
   const [inputValue, setInputValue] = useState("")
@@ -74,7 +76,26 @@ function NavigationBar() {
               closeButton
               style={{ borderBottom: "2px solid #eee", margin: " 0 1rem" }}
             >
-              <Offcanvas.Title>USER</Offcanvas.Title>
+              <div className="d-flex align-items-center">
+                <Image
+                  src={avatar}
+                  width="50px"
+                  height="50px"
+                  roundedCircle
+                  alt="avatar image"
+                  className="me-2"
+                />
+                <div className="m-0 p-0">
+                  <span className="fs-5 fw-bold">Artur</span>
+                  <br />
+                  <a
+                    href="mailto:habart1978@gmail.com"
+                    className="border-top border-secondary fs-6"
+                  >
+                    habart1978@gmail.com
+                  </a>
+                </div>
+              </div>
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-start flex-grow-3 pe-3">
