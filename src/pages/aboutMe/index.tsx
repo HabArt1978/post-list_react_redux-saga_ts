@@ -70,7 +70,7 @@ const AboutMePage = () => {
                   телефон : <a href="tel:+7(927)640-95-24">+7 927 640-95-24</a>
                 </p>
                 <p className="m-0">
-                  Telegram :{" "}
+                  Telegram :
                   <a href="https://t.me/+79276409524">+7 927 640-95-24</a>
                 </p>
               </ListGroup.Item>

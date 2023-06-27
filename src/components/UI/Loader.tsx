@@ -2,20 +2,13 @@ import Spinner from "react-bootstrap/Spinner"
 
 function Loader() {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        margin: "1rem 0",
-      }}
-    >
+    <div className="d-flex justify-content-center align-items-center mx-auto my-3">
       <Spinner
         animation="border"
         variant="primary"
         role="status"
       ></Spinner>
-      <span style={{ marginLeft: "1rem" }}>Loading...</span>
+      <span className="ms-3">Loading...</span>
     </div>
   )
 }

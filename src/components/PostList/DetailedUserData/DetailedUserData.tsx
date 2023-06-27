@@ -49,7 +49,7 @@ function DetailedUserData({ details, loading, errorText }: UserDetailsProps) {
   return (
     <div
       className="shadow p-3 mb-3 bg-body-tertiary rounded"
-      style={{ maxWidth: "600px" }}
+      style={{ maxWidth: "800px" }}
     >
       <Card>
         <Card.Body>
